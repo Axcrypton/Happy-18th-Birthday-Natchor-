@@ -1,0 +1,1414 @@
+/* =========================================
+   VARIABLES
+========================================= */
+
+:root {
+    --night: #050711;
+    --night-two: #090c1b;
+
+    --white: #f4f1ff;
+    --soft-white: #dcd8eb;
+
+    --muted: #85849b;
+
+    --purple: #a895ff;
+    --blue: #789cff;
+    --pink: #d29bff;
+
+    --glass: rgba(255,255,255,.045);
+    --border: rgba(255,255,255,.10);
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background: var(--night);
+
+    color: var(--white);
+
+    font-family: "DM Sans", sans-serif;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.sky {
+    position: fixed;
+    inset: 0;
+
+    z-index: -10;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #11152d 0%,
+            #080a18 42%,
+            #03040b 100%
+        );
+}
+
+
+/* Aurora */
+
+.aurora {
+    position: fixed;
+
+    width: 60vw;
+    height: 60vw;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    opacity: .12;
+
+    pointer-events: none;
+
+    z-index: -8;
+
+    animation: auroraMove 14s ease-in-out infinite alternate;
+}
+
+.aurora-one {
+    background: #7657ff;
+
+    top: -30%;
+    left: -15%;
+}
+
+.aurora-two {
+    background: #4688ff;
+
+    right: -20%;
+    bottom: -30%;
+
+    animation-delay: -5s;
+}
+
+
+@keyframes auroraMove {
+
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+
+    to {
+        transform: translate(80px, 40px) scale(1.25);
+    }
+
+}
+
+
+/* =========================================
+   STAR CANVAS
+========================================= */
+
+#starCanvas {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: -5;
+}
+
+
+/* =========================================
+   CURSOR LIGHT
+========================================= */
+
+.cursor-glow {
+    position: fixed;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(142,125,255,.08),
+            transparent 65%
+        );
+
+    transition:
+        left .12s ease,
+        top .12s ease;
+}
+
+
+/* =========================================
+   MUSIC
+========================================= */
+
+.music-button {
+
+    position: fixed;
+
+    top: 22px;
+    right: 22px;
+
+    z-index: 50;
+
+    border: 1px solid var(--border);
+
+    background: rgba(10,12,28,.65);
+
+    backdrop-filter: blur(15px);
+
+    color: var(--soft-white);
+
+    padding: 9px 14px;
+
+    border-radius: 50px;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+}
+
+.music-button:hover {
+
+    border-color: rgba(168,149,255,.5);
+
+    box-shadow:
+        0 0 25px rgba(142,125,255,.15);
+
+}
+
+.music-icon {
+
+    color: var(--purple);
+
+    margin-right: 6px;
+}
+
+
+/* =========================================
+   EXPERIENCE
+========================================= */
+
+#experience {
+
+    width: 100%;
+    min-height: 100vh;
+
+    position: relative;
+}
+
+
+/* =========================================
+   SCENES
+========================================= */
+
+.scene {
+
+    position: absolute;
+
+    inset: 0;
+
+    min-height: 100vh;
+
+    padding:
+        80px 25px
+        50px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        scale(.97)
+        translateY(20px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.2,.8,.2,1),
+        visibility .9s;
+}
+
+.scene.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        scale(1)
+        translateY(0);
+}
+
+
+/* =========================================
+   TYPOGRAPHY
+========================================= */
+
+.tiny-label {
+
+    margin: 0 0 25px;
+
+    color: #8d89a6;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+h1,
+h2 {
+
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-weight: 300;
+
+    line-height: .95;
+
+    letter-spacing: -2px;
+}
+
+h1 {
+
+    font-size:
+        clamp(
+            70px,
+            12vw,
+            150px
+        );
+}
+
+h2 {
+
+    font-size:
+        clamp(
+            52px,
+            8vw,
+            95px
+        );
+}
+
+h1 em,
+h2 em {
+
+    font-style: italic;
+
+    color: #aaa0ff;
+
+}
+
+
+/* =========================================
+   OPENING
+========================================= */
+
+.opening-content {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    max-width: 700px;
+}
+
+.opening-message {
+
+    margin:
+        30px 0 15px;
+
+    color: var(--soft-white);
+
+    font-size: 14px;
+
+    line-height: 2;
+
+    font-weight: 300;
+}
+
+.quiet-line {
+
+    color: #88869c;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 23px;
+
+    font-style: italic;
+}
+
+
+/* Moon */
+
+.moon {
+
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    margin-bottom: 35px;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffffff,
+            #d9d8e8 50%,
+            #9291a7
+        );
+
+    box-shadow:
+        0 0 35px rgba(216,214,245,.2),
+        0 0 100px rgba(127,117,255,.15);
+
+    animation:
+        moonFloat 5s ease-in-out infinite;
+}
+
+.moon-inner {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 75% 30%,
+            #050711 0,
+            #050711 62%,
+            transparent 63%
+        );
+}
+
+
+@keyframes moonFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.enter-button,
+.continue-button,
+.wish-button,
+.wish-release,
+.final-button {
+
+    border: 1px solid rgba(168,149,255,.35);
+
+    background:
+        rgba(130,112,255,.08);
+
+    color: #ddd9ef;
+
+    padding: 14px 23px;
+
+    border-radius: 50px;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition:
+        .35s ease;
+}
+
+.enter-button {
+
+    margin-top: 25px;
+}
+
+.enter-button span,
+.wish-button span {
+
+    margin-left: 8px;
+
+    color: var(--purple);
+}
+
+.enter-button:hover,
+.continue-button:hover,
+.wish-button:hover,
+.wish-release:hover,
+.final-button:hover {
+
+    background:
+        rgba(150,130,255,.16);
+
+    border-color:
+        rgba(168,149,255,.75);
+
+    box-shadow:
+        0 0 35px
+        rgba(132,112,255,.16);
+
+    transform:
+        translateY(-3px);
+}
+
+button:active {
+    transform: scale(.97);
+}
+
+
+/* =========================================
+   CONSTELLATION
+========================================= */
+
+.section-heading {
+
+    position: absolute;
+
+    top: 13%;
+
+    width: 100%;
+
+    pointer-events: none;
+}
+
+.section-heading h2 {
+
+    font-size:
+        clamp(
+            45px,
+            7vw,
+            75px
+        );
+
+    margin-bottom: 22px;
+}
+
+.section-heading > p:last-child {
+
+    color: #858398;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+.constellation-field {
+
+    position: relative;
+
+    width: min(700px, 90vw);
+
+    height: 450px;
+
+    margin-top: 100px;
+}
+
+
+/* SVG lines */
+
+.constellation-lines {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: .16;
+
+    pointer-events: none;
+}
+
+.constellation-lines line {
+
+    stroke: #a99cff;
+
+    stroke-width: 1;
+
+    stroke-dasharray: 4 10;
+
+    animation:
+        constellationPulse 4s ease-in-out infinite;
+}
+
+@keyframes constellationPulse {
+
+    50% {
+        opacity: .3;
+    }
+
+}
+
+
+/* Stars */
+
+.star-point {
+
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 7px #fff,
+        0 0 20px #9c8eff,
+        0 0 45px #8875ff;
+
+    cursor: pointer;
+
+    z-index: 3;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.star-point::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -15px;
+
+    border-radius: 50%;
+}
+
+.star-point:hover {
+
+    transform: scale(1.8);
+
+    box-shadow:
+        0 0 10px #fff,
+        0 0 30px #a99cff,
+        0 0 60px #8875ff;
+}
+
+.star-one {
+    left: 13%;
+    top: 25%;
+}
+
+.star-two {
+    left: 39%;
+    top: 14%;
+}
+
+.star-three {
+    left: 60%;
+    top: 41%;
+}
+
+.star-four {
+    left: 81%;
+    top: 21%;
+}
+
+.star-five {
+    left: 49%;
+    top: 77%;
+}
+
+
+/* Star message */
+
+.star-message {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 8%;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    width: min(500px, 85vw);
+
+    min-height: 45px;
+
+    opacity: 0;
+
+    transition: .5s ease;
+
+    pointer-events: none;
+}
+
+.star-message.show {
+
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+#starMessageText {
+
+    color: #bbb7cd;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 20px;
+
+    font-style: italic;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   GLASS MESSAGE
+========================================= */
+
+.message-container {
+
+    width: min(600px, 90vw);
+}
+
+.glass-card {
+
+    padding:
+        45px
+        clamp(25px, 6vw, 55px);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.025)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    border-radius: 24px;
+
+    backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.3);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.glass-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    top: -150px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background:
+        #8e7dff;
+
+    opacity: .07;
+
+    filter: blur(50px);
+}
+
+.card-symbol {
+
+    color: #a99cff;
+
+    font-size: 25px;
+
+    margin-bottom: 25px;
+}
+
+.glass-card h2 {
+
+    font-size:
+        clamp(40px, 6vw, 60px);
+
+    margin-bottom: 25px;
+}
+
+.glass-card p {
+
+    color: #9794a8;
+
+    font-size: 13px;
+
+    line-height: 1.9;
+
+    margin: 15px 0;
+}
+
+.glass-card strong {
+
+    display: block;
+
+    margin-top: 25px;
+
+    color: #c6c1dc;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 30px;
+
+    font-weight: 400;
+}
+
+
+/* =========================================
+   BIRTHDAY
+========================================= */
+
+.birthday-content {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    width: min(650px, 90vw);
+}
+
+.orbit {
+
+    width: 160px;
+    height: 160px;
+
+    position: relative;
+
+    display: grid;
+
+    place-items: center;
+
+    margin-bottom: 40px;
+}
+
+.birthday-star {
+
+    font-size: 45px;
+
+    color: #e7e4ff;
+
+    text-shadow:
+        0 0 15px #fff,
+        0 0 40px #a99cff,
+        0 0 80px #806aff;
+
+    animation:
+        starBreath 3s ease-in-out infinite;
+}
+
+@keyframes starBreath {
+
+    50% {
+        transform: scale(1.12);
+
+        text-shadow:
+            0 0 20px #fff,
+            0 0 60px #a99cff,
+            0 0 100px #806aff;
+    }
+}
+
+.orbit-ring {
+
+    position: absolute;
+
+    inset: 0;
+
+    border: 1px solid rgba(157,143,255,.15);
+
+    border-radius: 50%;
+}
+
+.ring-one {
+
+    transform:
+        rotateX(65deg)
+        rotateZ(20deg);
+
+    animation:
+        orbitSpin 9s linear infinite;
+}
+
+.ring-two {
+
+    transform:
+        rotateY(65deg)
+        rotateZ(-20deg);
+
+    animation:
+        orbitSpin 12s linear infinite reverse;
+}
+
+.orbit-dot {
+
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    background: #b9aeff;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 15px #9a8cff;
+
+    animation:
+        orbitDot 5s linear infinite;
+}
+
+
+@keyframes orbitSpin {
+
+    to {
+        transform:
+            rotateX(65deg)
+            rotateZ(380deg);
+    }
+
+}
+
+@keyframes orbitDot {
+
+    to {
+        transform:
+            rotate(360deg)
+            translateX(80px);
+    }
+
+}
+
+.birthday-content h2 {
+
+    font-size:
+        clamp(
+            55px,
+            10vw,
+            100px
+        );
+}
+
+.birthday-name {
+
+    margin:
+        20px 0 30px;
+
+    color: #9894aa;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 24px;
+
+    font-style: italic;
+}
+
+.birthday-message {
+
+    max-width: 500px;
+
+    color: #88869b;
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+.birthday-message p {
+
+    margin: 12px 0;
+}
+
+.birthday-message em {
+
+    color: #aaa1e9;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 18px;
+}
+
+
+/* =========================================
+   WISH
+========================================= */
+
+.wish-content {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.wish-orb {
+
+    width: 140px;
+    height: 140px;
+
+    border-radius: 50%;
+
+    display: grid;
+
+    place-items: center;
+
+    margin-bottom: 35px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(180,170,255,.12),
+            transparent 65%
+        );
+
+    border:
+        1px solid
+        rgba(170,155,255,.25);
+
+    box-shadow:
+        0 0 40px
+        rgba(140,120,255,.08);
+
+    transition: 1s ease;
+}
+
+.wish-orb span {
+
+    font-size: 35px;
+
+    color: #c9c2ff;
+
+    text-shadow:
+        0 0 20px #a99cff;
+}
+
+.wish-content h2 {
+
+    font-size:
+        clamp(
+            45px,
+            7vw,
+            75px
+        );
+
+    margin-bottom: 25px;
+}
+
+.wish-content > p {
+
+    color: #858298;
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+.wish-release {
+
+    margin-top: 25px;
+}
+
+.wish-result {
+
+    min-height: 30px;
+
+    color: #aaa2d3 !important;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 22px !important;
+
+    font-style: italic;
+}
+
+
+/* Wish activated */
+
+.wish-orb.released {
+
+    transform: scale(1.3);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(190,175,255,.35),
+            rgba(130,110,255,.05) 60%,
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 50px rgba(140,120,255,.3),
+        0 0 120px rgba(140,120,255,.2);
+}
+
+
+/* =========================================
+   FINALE
+========================================= */
+
+.finale {
+
+    overflow: hidden;
+}
+
+.finale-stars {
+
+    color: #a99cff;
+
+    letter-spacing: 12px;
+
+    margin-bottom: 30px;
+
+    animation:
+        starBreath 4s ease-in-out infinite;
+}
+
+.finale h1 {
+
+    font-size:
+        clamp(
+            55px,
+            10vw,
+            115px
+        );
+}
+
+.final-message {
+
+    max-width: 500px;
+
+    margin: 25px auto 0;
+
+    color: #9693a8;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+.final-line {
+
+    width: 70px;
+
+    height: 1px;
+
+    margin: 35px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #a99cff,
+            transparent
+        );
+}
+
+.final-birthday {
+
+    color: #d0cbeb;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 34px;
+}
+
+.signature {
+
+    color: #656376;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    margin-top: 15px;
+}
+
+.replay-button {
+
+    margin-top: 35px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #77748b;
+
+    cursor: pointer;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    transition: .3s;
+}
+
+.replay-button:hover {
+
+    color: #b0a8d1;
+}
+
+
+/* =========================================
+   HELPERS
+========================================= */
+
+.hidden {
+
+    display: none !important;
+}
+
+
+/* =========================================
+   FLASH
+========================================= */
+
+.screen-flash {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: white;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 100;
+
+    transition: opacity .4s;
+}
+
+.screen-flash.flash {
+
+    opacity: .08;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        overflow: hidden;
+    }
+
+    .scene {
+        padding:
+            80px 20px
+            35px;
+    }
+
+    .music-button {
+        top: 14px;
+        right: 14px;
+    }
+
+    .opening-message {
+        font-size: 13px;
+    }
+
+    .moon {
+        width: 80px;
+        height: 80px;
+
+        margin-bottom: 28px;
+    }
+
+    .constellation-field {
+
+        width: 100%;
+
+        height: 360px;
+
+        margin-top: 120px;
+    }
+
+    .section-heading {
+
+        top: 9%;
+    }
+
+    .section-heading h2 {
+
+        font-size: 45px;
+    }
+
+    .star-one {
+        left: 8%;
+    }
+
+    .star-two {
+        left: 40%;
+    }
+
+    .star-three {
+        left: 61%;
+    }
+
+    .star-four {
+        left: 87%;
+    }
+
+    .star-five {
+        left: 47%;
+    }
+
+    .constellation-lines {
+
+        transform:
+            scale(.9);
+    }
+
+    .glass-card {
+
+        padding:
+            32px 23px;
+    }
+
+    .glass-card p {
+
+        font-size: 12px;
+    }
+
+    .birthday-message {
+
+        font-size: 12px;
+    }
+
+    .wish-orb {
+
+        width: 110px;
+        height: 110px;
+    }
+
+    .final-message {
+
+        font-size: 13px;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+    }
+
+}

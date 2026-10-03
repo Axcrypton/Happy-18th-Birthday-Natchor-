@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy 18th Birthday Natchor! ✦</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="sky"></div>
+    <div class="aurora aurora-one"></div>
+    <div class="aurora aurora-two"></div>
+
+    <canvas id="starCanvas"></canvas>
+
+    <div class="cursor-glow"></div>
+
+    <!-- MUSIC -->
+    <audio id="music" loop>
+        <source src="sky.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-button" id="musicButton">
+        <span class="music-icon">♫</span>
+        <span id="musicText">music</span>
+    </button>
+
+
+    <!-- ========================= -->
+    <!-- OPENING -->
+    <!-- ========================= -->
+
+    <main id="experience">
+
+        <section class="scene active" id="opening">
+
+            <div class="opening-content">
+
+                <p class="tiny-label">
+                    A LITTLE SOMETHING FOR YOU BRO
+                </p>
+
+                <div class="moon">
+                    <div class="moon-inner"></div>
+                </div>
+
+                <h1>
+                    Hey...
+                </h1>
+
+                <p class="opening-message">
+                    I know you're probably exhausted<br>
+                    from everything that's been going on.
+                </p>
+
+                <p class="quiet-line">
+                    So I made something cool for you to look at night, if you want.
+                </p>
+
+                <button class="enter-button" id="enterButton">
+                    Look at the Stars!
+                    <span>→</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- CONSTELLATION -->
+        <!-- ========================= -->
+
+        <section class="scene" id="constellation">
+
+            <div class="section-heading">
+
+                <p class="tiny-label">
+                    LOOK AROUND
+                </p>
+
+                <h2>
+                    Some things are<br>
+                    <em>worth discovering.</em>
+                </h2>
+
+                <p>
+                    There are a few stars here.<br>
+                    Try clicking one.
+                </p>
+
+            </div>
+
+            <div class="constellation-field">
+
+                <button class="star-point star-one" data-message="It's okay to rest for a little while when you need to."></button>
+
+                <button class="star-point star-two" data-message="Your moments are still moments worth remembering."></button>
+
+                <button class="star-point star-three" data-message="There are people who genuinely appreciate having you around."></button>
+
+                <button class="star-point star-four" data-message="You probably don't realize how many little things make you special."></button>
+
+                <button class="star-point star-five" data-message="Life has been exhausting, but you've made it through. ♡"></button>
+
+                <svg class="constellation-lines" viewBox="0 0 700 450">
+                    <line x1="100" y1="120" x2="280" y2="70"/>
+                    <line x1="280" y1="70" x2="430" y2="190"/>
+                    <line x1="430" y1="190" x2="570" y2="100"/>
+                    <line x1="430" y1="190" x2="350" y2="350"/>
+                </svg>
+
+            </div>
+
+            <div class="star-message" id="starMessage">
+                <span id="starMessageText"></span>
+            </div>
+
+            <button class="continue-button hidden" id="continueStars">
+                I found them all →
+            </button>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- MESSAGE -->
+        <!-- ========================= -->
+
+        <section class="scene" id="message">
+
+            <div class="message-container">
+
+                <p class="tiny-label">
+                    SOMETHING I WANTED TO SAY
+                </p>
+
+                <div class="glass-card">
+
+                    <div class="card-symbol">✦</div>
+
+                    <h2>
+                        You may be in pain...
+                    </h2>
+
+                    <p>
+                        But you've made it through this far.
+                    </p>
+
+                    <p>
+                        Enjoy this special day my friend, because you deserve all the 
+                        happiness in the world. As you turn 18, I hope you find the 
+                        courage to chase your dreams and embrace the adventures that await you.
+                    </p>
+
+                    <p>
+                        You have your own way of making ordinary
+                        moments feel a little better.
+                    </p>
+
+                    <p>
+                        And maybe you don't hear it often enough,
+                        so let me say it today:
+                    </p>
+
+                    <strong>
+                        You're appreciated.
+                    </strong>
+
+                </div>
+
+                <button class="continue-button" id="messageNext">
+                    there's more →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- BIRTHDAY -->
+        <!-- ========================= -->
+
+        <section class="scene" id="birthday">
+
+            <div class="birthday-content">
+
+                <div class="orbit">
+
+                    <div class="orbit-ring ring-one"></div>
+                    <div class="orbit-ring ring-two"></div>
+                    <div class="orbit-dot"></div>
+
+                    <div class="birthday-star">
+                        ✦
+                    </div>
+
+                </div>
+
+                <p class="tiny-label">
+                    AND NOW...
+                </p>
+
+                <h2>
+                    Happy Birthday.
+                </h2>
+
+                <p class="birthday-name">
+                    To Natchor.
+                </p>
+
+                <div class="birthday-message">
+
+                    <p>
+                        I hope this year gives you more reasons
+                        to smile than reasons to worry.
+                    </p>
+
+                    <p>
+                        More moments where you feel comfortable
+                        being exactly who you are.
+                    </p>
+
+                    <p>
+                        More people who understand you.
+                    </p>
+
+                    <p>
+                        And more little moments that make you
+                        think, <em>"I'm glad I'm here."</em>
+                    </p>
+
+                </div>
+
+                <button class="wish-button" id="wishButton">
+                    make a wish
+                    <span>✦</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- WISH -->
+        <!-- ========================= -->
+
+        <section class="scene" id="wish">
+
+            <div class="wish-content">
+
+                <div class="wish-orb" id="wishOrb">
+                    <span>✦</span>
+                </div>
+
+                <p class="tiny-label">
+                    JUST FOR A MOMENT
+                </p>
+
+                <h2>
+                    Think of something<br>
+                    <em>you really want.</em>
+                </h2>
+
+                <p>
+                    You don't have to tell anyone.<br>
+                    Just keep it somewhere close.
+                </p>
+
+                <button class="wish-release" id="releaseWish">
+                    let it go ✦
+                </button>
+
+                <p class="wish-result" id="wishResult"></p>
+
+                <button class="final-button hidden" id="finalButton">
+                    one last thing →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- FINALE -->
+        <!-- ========================= -->
+
+        <section class="scene finale" id="finale">
+
+            <div class="finale-stars">
+                ✦　·　✧　·　✦
+            </div>
+
+            <p class="tiny-label">
+                FOR YOU
+            </p>
+
+            <h1>
+                You were never<br>
+                meant to fade<br>
+                <em>into the background.</em>
+            </h1>
+
+            <p class="final-message">
+                You don't need to become louder,
+                brighter, or different to matter.
+            </p>
+
+            <p class="final-message">
+                Keep being you.
+            </p>
+
+            <div class="final-line"></div>
+
+            <div class="final-birthday">
+                Happy Birthday ♡
+            </div>
+
+            <p class="signature">
+                made just for you.
+            </p>
+
+            <button class="replay-button" id="replayButton">
+                ↺ experience it again
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- SCREEN FLASH -->
+    <div class="screen-flash" id="screenFlash"></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
